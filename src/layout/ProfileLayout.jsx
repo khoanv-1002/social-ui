@@ -1,5 +1,7 @@
 import { Outlet } from "react-router";
-import { Header, Menu } from "../components/profile";
+import { Header } from "../components/profile/Header";
+import { Menu } from "../components/profile/Menu";
+
 
 export const ProfileLayout = () => {
   return (

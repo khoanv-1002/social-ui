@@ -1,34 +1,38 @@
+import { BadgeCheck, LogOut, UserPlus } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 export const Suggestion = () => {
   const { user } = useAuth();
   const suggestions = [
-    { username: "ngoclan151005", avatar: '"https://i.imgur.com/7VbD1Qm.png"' },
-    { username: "df.rbee_25", avatar: '"https://i.imgur.com/7VbD1Qm.png"' },
-    { username: "tranphuong_203", avatar: '"https://i.imgur.com/7VbD1Qm.png"' },
+    { username: "Lan cục cức", avatar: '"https://i.imgur.com/7VbD1Qm.png"' },
+    { username: "Tester", avatar: '"https://i.imgur.com/7VbD1Qm.png"' },
+    { username: "Dev", avatar: '"https://i.imgur.com/7VbD1Qm.png"' },
     {
-      username: "hoai.vu.7127146",
+      username: "Project Manager",
       avatar: '"https://i.imgur.com/7VbD1Qm.png"',
     },
-    { username: "ln.anh03", avatar: '"https://i.imgur.com/7VbD1Qm.png"' },
+    { username: "Leader", avatar: '"https://i.imgur.com/7VbD1Qm.png"' },
   ];
   return (
     <>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 dark:text-white text-white-theme">
         <div className="flex items-center gap-2">
           <img
             src={user.avatar}
             className="w-10 h-10 rounded-full ring-2 ring-pink-500"
           />
-          <p className="text-sm text-zinc-400">{user.name}</p>
+          <p className="text-xl font-semibold ">{user.name}</p>
+           <BadgeCheck className="ml-1 text-green-500 w-3 h-3 md:w-4 md:h-4" />
         </div>
-        <button className="text-blue-400 text-sm">Đăng xuất</button>
+        <button className="hover:scale-105 hover:text-red-400 text-sm">
+          <LogOut/>
+        </button>
       </div>
-      <div className="mb-4 flex justify-between items-center">
+      <div className="mb-4 flex justify-between items-center dark:text-white">
         <p className="text-sm text-zinc-400">Đề xuất cho bạn</p>
         <button className="text-sm">Xem tất cả</button>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 dark:text-white">
         {suggestions.map((s, i) => (
           <div key={i} className="flex justify-between items-center">
             <div className="flex items-center gap-2">
@@ -36,9 +40,11 @@ export const Suggestion = () => {
                 src="https://i.imgur.com/7VbD1Qm.png"
                 className="w-10 h-10 rounded-full ring-2 ring-pink-500"
               />
-              <p className="text-sm font-semibold ">{s.username}</p>
+              <p className="text-sm font-semibold dark:text-white text-white-theme">{s.username}</p>
             </div>
-            <button className="text-sm text-blue-400">Thêm bạn bè</button>
+            <button className="text-sm hover:scale-105 hover:text-red-400">
+              <UserPlus />
+            </button>
           </div>
         ))}
       </div>

@@ -11,7 +11,7 @@ export const Menu = () => {
 
   return (
     <div className="h-full">
-      <ul className="flex items-center justify-around p-2 w-full border-y border-zinc-700">
+      <ul className="flex items-center justify-around p-2 w-full border-b border-b-wt dark:border-zinc-700">
         {menuItems.map(({ to, icon }) => (
           <li
             className="transition-transform duration-300 hover:scale-105"
@@ -21,7 +21,7 @@ export const Menu = () => {
               to={to}
               end
               className={({ isActive }) =>
-                ` ${isActive ? "text-pink-400" : "text-white"}`
+                ` ${isActive ? "text-pink-400" : "dark:text-white text-white-theme"}`
               }
             >
               {icon}
