@@ -16,6 +16,17 @@ export const Header = () => {
         <UpdateProfile onClose={() => setUpdateProfile(false)} />
       )}
       <header className="relative rounded-2xl bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNNfsPHUOpXCrvgz2zvBS3_GuG1efiESamw&https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNNfsPHUOpXCrvgz2zvBS3_GuG1efiESamw&s)] bg-cover bg-center p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-6 dark:text-white text-bg-white-theme">
+        <label htmlFor="update">
+          <SwitchCamera className="absolute bottom-2 right-2 transition-transform duration-300 hover:scale-105 w-7 h-7 md:w-9 md:h-9 bg-gray-800 rounded-full p-1 text-white z-60" />
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          name=""
+          id="update"
+          hidden
+        />
         <div className="absolute rounded-2xl inset-0 bg-black/60 z-0" />
         <div className="relative rounded-2xl z-10 flex flex-col md:flex-row items-center gap-4 w-full">
           <div className="relative">

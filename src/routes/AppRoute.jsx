@@ -8,6 +8,10 @@ import { ProfilePage } from "../pages/profile/ProfilePage";
 import { Info } from "../components/profile/Info";
 import { MessageLayout } from "../layout/MessageLayout";
 import { MessagePage } from "../pages/message/MessagePage";
+import { FriendPage } from "../pages/friends/FriendPage";
+import { Image } from "../components/profile/Image";
+import { LoginPage } from "../pages/auth/LoginPage";
+import { SignUpPage } from "../pages/auth/SignUp";
 
 const AppRoute = () => {
   return (
@@ -15,23 +19,22 @@ const AppRoute = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="search" element={<>search</>} />
-          <Route path="friends" element={<div>Friends Page</div>} />"
+          <Route path="friends" element={<FriendPage />} />"
           <Route path="settings" element={<SettingPage />} />
           <Route path="profile" element={<ProfileLayout />}>
             <Route index element={<ProfilePage />} />
-            <Route path="friends" element={<div>Users Page</div>} />
-            <Route path="images" element={<div>Images Page</div>} />
+            <Route path="friends" element={<FriendPage />} />
+            <Route path="images" element={<Image />} />
             <Route path="info" element={<Info />} />
           </Route>
         </Route>
         <Route path="/message" element={<MessageLayout />}>
-          <Route index element={<MessagePage/>} />
-          <Route path=":id" element={<div>Message Detail Page</div>} />
+          <Route index element={<MessagePage />} />
+          <Route path=":id" element={<MessagePage />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
-          <Route path="login" element={<div>Login Page</div>} />
-          <Route path="register" element={<div>Register Page</div>} />
+          <Route index element={<LoginPage />} />
+          <Route path="register" element={<SignUpPage/>} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

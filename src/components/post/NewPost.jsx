@@ -6,7 +6,7 @@ export const NewPost = () => {
   return (
     <>
       {showModal && <ModalAddPost onClose={() => setShowModal(false)} />}
-      <div className="flex justify-between rounded-t-4xl items-center border-b border-b-wt dark:border-zinc-700 py-4 px-6">
+      <div className="flex justify-between rounded-t-4xl items-center border-b border-b-wt dark:border-zinc-700 py-4 px-6 ">
         <div className="flex items-center gap-4">
           <img
             src="https://i.imgur.com/7VbD1Qm.png"

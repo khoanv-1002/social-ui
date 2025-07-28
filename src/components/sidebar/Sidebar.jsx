@@ -26,7 +26,7 @@ export const Sidebar = () => {
   const [activePopup, setActivePopup] = useState(null);
   const { pathname } = useLocation();
 
-  const hideLabel = pathname === "/message";
+  const hideLabel = pathname.startsWith("/message");
   const isCompact = activePopup !== null || hideLabel;
 
   const handleLinkClick = () => {
@@ -54,7 +54,7 @@ export const Sidebar = () => {
       <div
         className={`fixed top-0 left-0 z-50 h-screen p-4 border-r border-b-wt transition-all duration-300 ease-in-out
         bg-[#F1F4F7] text-black dark:text-white dark:bg-black dark:border-zinc-800
-        ${isCompact ? "w-20" : "w-64"}`}
+        ${isCompact ? "w-20" : "w-20 md:w-64"}`}
       >
         <Link
           to="/"

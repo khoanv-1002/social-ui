@@ -8,6 +8,7 @@ import {
   CalendarDays,
   Cake,
   User as UserIcon,
+  PencilLine,
 } from "lucide-react";
 
 const calculateAge = (birthDate) => {
@@ -20,51 +21,52 @@ const calculateAge = (birthDate) => {
 };
 
 export const Info = () => {
-  const { user } = useAuth(); // Dữ liệu user từ context
+  const { user } = useAuth();
   const [showUpdateProfile, setShowUpdateProfile] = useState(false);
 
   const age = calculateAge(user.birthDate);
 
+  const infoItems = [
+    { icon: Phone, label: user.phone },
+    { icon: Mail, label: user.email },
+    { icon: MapPin, label: user.address },
+    {
+      icon: CalendarDays,
+      label: new Date(user.birthDate).toLocaleDateString("vi-VN"),
+    },
+    { icon: Cake, label: `${age} tuổi` },
+    { icon: UserIcon, label: user.gender },
+  ];
+
   return (
-    <div className="flex flex-col gap-4 text-white-theme dark:text-b-wt p-4">
-      <div className="flex flex-col gap-3 text-sm">
-        <div className="flex items-center gap-2">
-          <Phone size={16} className="text-blue-500" />
-          <span>{user.phone}</span>
+    <div className="md:p-4 pt-2 text-white-theme dark:text-b-wt select-none">
+      <div className="bg-white dark:bg-gray-900 shadow-md rounded-xl p-6 space-y-4 transition-all">
+        <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
+          Thông tin cá nhân
+        </h2>
+
+        <div className="space-y-3">
+          {infoItems.map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 px-4 py-2 rounded-lg hover:shadow-sm transition"
+            >
+              <item.icon size={20} className="text-blue-500" />
+              <span className="text-sm text-gray-700 dark:text-gray-200">
+                {item.label}
+              </span>
+            </div>
+          ))}
         </div>
 
-        <div className="flex items-center gap-2">
-          <Mail size={16} className="text-blue-500" />
-          <span>{user.email}</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <MapPin size={16} className="text-blue-500" />
-          <span>{user.address}</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <CalendarDays size={16} className="text-blue-500" />
-          <span>{new Date(user.birthDate).toLocaleDateString("vi-VN")}</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <Cake size={16} className="text-blue-500" />
-          <span>{age} tuổi</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <UserIcon size={16} className="text-blue-500" />
-          <span>{user.gender}</span>
-        </div>
+        <button
+          onClick={() => setShowUpdateProfile(true)}
+          className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+        >
+          <PencilLine size={16} />
+          Chỉnh sửa thông tin
+        </button>
       </div>
-
-      <button
-        onClick={() => setShowUpdateProfile(true)}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        Chỉnh sửa thông tin
-      </button>
 
       {showUpdateProfile && (
         <UpdateProfile onClose={() => setShowUpdateProfile(false)} />

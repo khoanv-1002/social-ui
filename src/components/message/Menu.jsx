@@ -1,4 +1,5 @@
 import { BadgeCheck, Dot, TrashIcon } from "lucide-react";
+import { Link } from "react-router";
 
 export const Menu = () => {
   return (
@@ -7,7 +8,7 @@ export const Menu = () => {
         Tin nhắn
       </h1>
       <div className="flex flex-col gap-y-4 px-1">
-        <div className="flex items-center justify-between p-2 rounded-2xl transition-transform duration-200 cursor-pointer w-full dark:hover:bg-zinc-800 hover:bg-zinc-200">
+        <Link to={`/message/1`} className="flex items-center justify-between p-2 rounded-2xl transition-transform duration-200 cursor-pointer w-full dark:hover:bg-zinc-800 hover:bg-zinc-200">
           <div className="flex items-start gap-2">
             <div className="relative w-10 h-10">
               <img
@@ -29,7 +30,7 @@ export const Menu = () => {
             size={20}
             className="ml-2 text-gray-400 hover:text-red-500 cursor-pointer transition-transform hover:scale-110"
           />
-        </div>
+        </Link>
       </div>
     </div>
   );
