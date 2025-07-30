@@ -10,7 +10,7 @@
   --animate-slide-right-to-left: slide-right-to-left 1.5s ease-in-out both;
   --animate-slide-bottom-to-top: slide-bottom-to-top 1.5s ease-in-out both;
   --animate-slide-top-to-bottom: slide-top-to-bottom 1.5s ease-in-out both;
-  --animate-process: process 1s ease-in-out both;
+  --animate-process: process 0.8s ease-in-out both;
   --color-white-theme: #1c2b33;
   --color-b-wt: #dee3e9;
 

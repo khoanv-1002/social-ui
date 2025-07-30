@@ -12,6 +12,12 @@ import { FriendPage } from "../pages/friends/FriendPage";
 import { Image } from "../components/profile/Image";
 import { LoginPage } from "../pages/auth/LoginPage";
 import { SignUpPage } from "../pages/auth/SignUp";
+import { DashboardLayout } from "../layout/DashboardLayout";
+import { OverviewPage } from "../pages/dashboard/OverviewPage";
+import { AdminProfilePage } from "../pages/dashboard/AdminProfilePage";
+import { AccountManagerPage } from "../pages/dashboard/AccountManagerPage";
+import { PostManagerPage } from "../pages/dashboard/PostManagerPage";
+import { RoleManagerPage } from "../pages/dashboard/RoleManagerPage";
 
 const AppRoute = () => {
   return (
@@ -34,9 +40,16 @@ const AppRoute = () => {
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<LoginPage />} />
-          <Route path="register" element={<SignUpPage/>} />
+          <Route path="register" element={<SignUpPage />} />
         </Route>
 
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<OverviewPage />} />
+          <Route path="account" element={<AccountManagerPage/>} />
+          <Route path="post" element={<PostManagerPage/>} />
+          <Route path="info" element={<AdminProfilePage/>} />
+          <Route path="add-role" element={<RoleManagerPage/>} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

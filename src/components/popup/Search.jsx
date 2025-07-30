@@ -59,8 +59,8 @@ export const Search = () => {
   }, []);
 
   return (
-    <div className="absolute top-0 left-[80px] h-full w-80 bg-[#F1F4F7] dark:bg-zinc-900 z-1000 rounded-r-2xl">
-      <div className="flex flex-col h-full w-80 animate-slide-left-to-right text-white-theme dark:text-b-wt border-r py-2 rounded-r-2xl border-b-wt dark:border-zinc-800 shadow-2xl">
+    <div className="absolute top-0 left-[80px] h-full w-80 bg-[#F1F4F7] dark:bg-zinc-900 z-20 rounded-r-2xl animate-slide-left-to-right">
+      <div className="flex flex-col h-full w-80 left-[80px]  text-white-theme dark:text-b-wt border-r py-2 rounded-r-2xl border-b-wt dark:border-zinc-800 shadow-2xl">
         <h1 className="text-2xl font-bold text-center">Tìm kiếm</h1>
 
         {/* Ô input */}

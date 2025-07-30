@@ -75,8 +75,8 @@ export const Notification = () => {
   }, [notifications]);
 
   return (
-    <div className="absolute top-0 left-[80px] h-full w-80 rounded-r-2xl bg-[#F1F4F7] dark:bg-black z-1000">
-      <div className="flex flex-col h-full w-80 animate-slide-left-to-right rounded-r-2xl text-gray-800 dark:text-b-wt border-r border-b-wt dark:border-zinc-800 shadow-2xl py-2 px-4">
+    <div className="absolute animate-slide-left-to-right top-0 left-[80px] h-full w-80 rounded-r-2xl bg-[#F1F4F7] dark:bg-black z-20">
+      <div className="flex flex-col h-full w-80 rounded-r-2xl text-gray-800 dark:text-b-wt border-r border-b-wt dark:border-zinc-800 shadow-2xl py-2 px-4">
         <h1 className="text-2xl font-bold text-center">Thông báo</h1>
         <div className="flex-1 overflow-y-auto mt-4">{content}</div>
       </div>

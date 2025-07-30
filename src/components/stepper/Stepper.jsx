@@ -39,8 +39,8 @@ export const Stepper = ({ currentStep = 0 }) => {
               <div className="w-15 mx-2">
                 <div
                   className={`${
-                    isCompleted ? "bg-green-500" : "bg-gray-200"
-                  } flex-1 rounded-4xl h-1 animate-process`}
+                    isCompleted ? "bg-green-500 animate-process" : "bg-gray-200"
+                  } flex-1 rounded-4xl h-1 `}
                 />
               </div>
             )}
