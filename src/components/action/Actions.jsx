@@ -1,19 +1,17 @@
 import { MessageCircle, Heart } from "lucide-react";
 import { useState } from "react";
 import { AddComment } from "../comment/AddComment";
-import { useAuth} from '../../context/AuthContext';
+import { useAuth } from "../../context/AuthContext";
 export const Actions = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [reactions, setReactions] = useState(0);
-  const [comments, setComments] = useState(0);
+  const [comments, setComments] = useState(100);
   const [isHidden, setIsHidden] = useState(true);
 
   const handleHeartClick = () => {
     setReactions((prev) => prev + 1);
   };
-  const handleCommentClick = () => {
-
-  };
+  const handleCommentClick = () => {};
 
   return (
     <>
@@ -35,11 +33,11 @@ export const Actions = () => {
       </div>
       {!isHidden && (
         <div
-          className={
+          className={`transition-all duration-300 ease-in-out transform ${
             isHidden
-              ? "animate-slide-bottom-to-top"
-              : "animate-slide-top-to-bottom"
-          }
+              ? "opacity-0 translate-y-2 scale-95 blur-sm pointer-events-none"
+              : "opacity-100 translate-y-0 scale-100 blur-0"
+          }`}
         >
           <AddComment />
         </div>

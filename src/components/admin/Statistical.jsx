@@ -30,7 +30,7 @@ export const Statistical = () => {
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`flex items-center p-5 rounded-3xl shadow-md transition-colors duration-300 ${card.bgLight} ${card.bgDark}`}
+          className={`flex items-center p-5 rounded-3xl shadow-md transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg ${card.bgLight} ${card.bgDark}`}
         >
           <div className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-sm mr-4">
             {card.icon}

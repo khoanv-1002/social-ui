@@ -5,12 +5,13 @@ import {
   Moon,
 } from "lucide-react";
 import { useMemo, useState } from "react";
-import { ToggleButton } from "../../components/button/ToggleButton";
 import { ThemeToggleButton } from "../../components/button/ThemeToggleButton";
 import { UpdateProfile } from "../../components/profile/UpdateProfile";
+import { SettingModal } from "./SettingModal"; 
 
 export const SettingPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showSecurityModal, setShowSecurityModal] = useState(false); 
 
   const settings = useMemo(() => [
     {
@@ -22,8 +23,8 @@ export const SettingPage = () => {
     {
       icon: <Lock />,
       title: "Bảo mật",
-      description: "Xác thực hai yếu tố qua email",
-      component: <ToggleButton />,
+      description: "Xác thực hai yếu tố, thay đổi mật khẩu",
+      onClick: () => setShowSecurityModal(true),
     },
     {
       icon: <Moon />,
@@ -36,7 +37,6 @@ export const SettingPage = () => {
       title: "Đăng xuất",
       description: "Đăng xuất tài khoản của bạn",
       onClick: () => {
-        // TODO: Add logout logic
         console.log("Đăng xuất...");
       },
     },
@@ -45,6 +45,7 @@ export const SettingPage = () => {
   return (
     <>
       {showModal && <UpdateProfile onClose={() => setShowModal(false)} />}
+      {showSecurityModal && <SettingModal onClose={() => setShowSecurityModal(false)} />}
 
       <div className="max-w-2xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 dark:text-white text-white-theme">Cài đặt</h1>

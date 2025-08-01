@@ -34,7 +34,7 @@ export const ModalAddPost = ({ onClose }) => {
         <div className="flex gap-3 mt-4">
           <img
             loading="lazy"
-            src="https://i.pravatar.cc/300"
+            src={user.avatar || "default.png"}
             className="w-10 h-10 rounded-full object-cover"
             alt="avatar"
           />

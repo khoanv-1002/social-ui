@@ -3,9 +3,6 @@ import { useAuth } from "../../context/AuthContext";
 import { UpdateProfile } from "./UpdateProfile";
 import { useState } from "react";
 
-const PROFILE_IMG =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfjNpt7mV0bJ6BxvMN4D09lhUaiUcW8i5UwA&s";
-
 export const Header = () => {
   const { user } = useAuth();
   const [updateProfile, setUpdateProfile] = useState(false);
@@ -15,7 +12,7 @@ export const Header = () => {
       {updateProfile && (
         <UpdateProfile onClose={() => setUpdateProfile(false)} />
       )}
-      <header className="relative rounded-2xl bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNNfsPHUOpXCrvgz2zvBS3_GuG1efiESamw&https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNNfsPHUOpXCrvgz2zvBS3_GuG1efiESamw&s)] bg-cover bg-center p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-6 dark:text-white text-bg-white-theme">
+      <header className={`relative rounded-2xl bg-[url(${user.coverUrl})] bg-cover bg-center p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-6 dark:text-white text-bg-white-theme`}>
         <label htmlFor="update">
           <SwitchCamera className="absolute bottom-2 right-2 transition-transform duration-300 hover:scale-105 w-7 h-7 md:w-9 md:h-9 bg-gray-800 rounded-full p-1 text-white z-60" />
         </label>
@@ -32,7 +29,7 @@ export const Header = () => {
           <div className="relative">
             <img
               className="w-24 h-24 md:w-36 md:h-36 rounded-full object-cover border-4 border-gray-700 shadow-md"
-              src={PROFILE_IMG}
+              src={user.avatar || "https://i.imgur.com/7VbD1Qm.png"}
               alt="Profile"
             />
             <label htmlFor="update">

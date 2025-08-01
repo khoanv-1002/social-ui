@@ -9,7 +9,7 @@ export const Header = () => {
     <header className="w-full bg-white dark:bg-[#121C2F] shadow px-6 py-3 rounded-3xl flex items-center justify-between">
       <div className="flex items-center gap-3">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfjNpt7mV0bJ6BxvMN4D09lhUaiUcW8i5UwA&s"
+          src={user.avatar || "default.png"}
           className="w-12 h-12 rounded-full border-2 border-pink-500 object-cover"
           alt="Avatar"
         />
