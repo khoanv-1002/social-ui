@@ -1,27 +1,68 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { getAccessToken, removeAccessToken, setAccessToken, setRefreshToken } from "../service/storeService";
+import { useAlerts } from "../context/AlertContext";
+import userService from "../service/userService";
+import accountService from "../service/accountService";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const isAuthenticated = true;
-  const [user, setUser] = useState({
-    id: "1",
-    name: "Developer",
-    avatar: "https://www.open.edu.au/-/media/blog/2023/10-october/learn-how-to-code.jpg?h=477&iar=0&w=715&rev=27fd8b9e501e49bd9722ac012f5336ce&extension=webp&hash=C3AF0F3FDE69B25DDA8002D837164208",
-    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNNfsPHUOpXCrvgz2zvBS3_GuG1efiESamw&https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNNfsPHUOpXCrvgz2zvBS3_GuG1efiESamw&s",
-    email: "developer@example.com",
-    phone: "09874298888",
-    address: "Cau Giay, Ha Noi",
-    birthDate: "2003-02-10",
-    gender: "Nam",
-    role: "ROLE_ADMIN",
-  });
+  const [user, setUser] = useState(null);
+  const [account, setAccount] = useState(null);
+  const { addAlert } = useAlerts();
+
+  const login = async (accessToken, refreshToken) => {
+    setAccessToken(accessToken);
+    setRefreshToken(refreshToken);
+  };
+
+  const logout = () => {
+    removeAccessToken();
+    addAlert({
+      type: "success",
+      message:
+        "Đăng xuất thành công",
+    });
+    setTimeout(() => {
+      window.location.href = '/auth';
+      setUser(null);
+    }, 2000);
+  };
+
+  const getCurrentUser = async () => {
+    try {
+      const [accountRes, userRes] = await Promise.all([
+        accountService.getAccountLogin(),
+        userService.getUserLogin()
+      ]);
+      setAccount(accountRes.data);
+      setUser(userRes.data);
+
+      console.log("Account:", accountRes.data);
+      console.log("User:", userRes.data);
+
+    } catch (err) {
+      addAlert?.({
+        type: "error",
+        message: err?.response?.data?.message || "Không thể tải dữ liệu người dùng!"
+      });
+    }
+  };
+
+
+
+  useEffect(() => {
+    const token = getAccessToken();
+    if (token) {
+      getCurrentUser();
+    }
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user }}>
+    <AuthContext.Provider value={{ user, login, logout, getCurrentUser }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export { AuthContext, AuthProvider };
