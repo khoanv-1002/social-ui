@@ -5,13 +5,16 @@ import "./index.css";
 import AppRoute from "./routes/AppRoute";
 import { AuthProvider } from "./provider/AuthProvider";
 import { ThemeProvider } from "./provider/ThemeProvider";
+import { AlertProvider } from './provider/AlertProvider';
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <AppRoute />
-      </AuthProvider>
-    </ThemeProvider>
+    <AlertProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <AppRoute />
+        </AuthProvider>
+      </ThemeProvider>
+    </AlertProvider>
   </StrictMode>
 );
